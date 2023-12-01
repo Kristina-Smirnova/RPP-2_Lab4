@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta charset="UTF-8">
+    <head>
+       <title>Обновление параметра налога на автомобиль</title>
+    </head>
+    <body>
+        <h1>Обновление параметра налога на автомобиль</h1>
+        <form action="/v1/car/tax-param/update" method="post">
+
+            <label for="code_rate">Код параметра:</label>
+            <input type="text" name="code_rate" id="code_rate" required><br><br>
+
+            <label for="region_code">Код региона:</label>
+            <input type="text" name="region_code" id="region_code" required><br><br>
+
+            <label for="from_hp_car">С какого количества лошадиных сил действует объект налогообложения:</label>
+            <input type="text" name="from_hp_car" id="from_hp_car" required><br><br>
+
+            <label for="to_hp_car">До какого количества лошадиных сил действует объект налогообложения:</label>
+            <input type="text" name="to_hp_car" id="to_hp_car" required><br><br>
+
+            <label for="from_production_year_car">С какого года производства автомобиля действует объект налогообложения:</label>
+            <input type="text" name="from_production_year_car" id="from_production_year_car" required><br><br>
+
+            <label for="to_production_year_car">До какого года производства автомобиля действует объект налогообложения:</label>
+            <input type="text" name="to_production_year_car" id="to_production_year_car" required><br><br>
+
+            <label for="rate">Налоговая ставка:</label>
+            <input type="text" name="rate" id="rate" required><br><br>
+
+            <button type="submit">Обновить</button>
+        </form>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </body>
+</html>
