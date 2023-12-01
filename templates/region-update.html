@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta charset="UTF-8">
+    <head>
+        <title>Обновление региона</title>
+    </head>
+    <body>
+        <h1>Обновление региона</h1>
+        <form method="post" action="/v1/region/update">
+
+            <label for="region_code">Номер региона:</label>
+            <input type="text" id="region_code" name="region_code"><br><br>
+
+            <label for="name">Название региона:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <button type="submit">Обновить</button>
+        </form>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </body>
+</html>
