@@ -1,22 +1,8 @@
-from flask import Blueprint, request, jsonify, render_template
-from db_test import db
+from flask import Blueprint, request, render_template
+from tables import db
+from tables import Region, CarTaxParam
+
 region_routes = Blueprint('region', __name__)
-
-
-# Описание классов в SQLAlchemy моделях
-class Region(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-
-
-class CarTaxParam(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    city_id = db.Column(db.Integer, db.ForeignKey('region.id'), nullable=False)
-    from_hp_car = db.Column(db.Integer, nullable=False)
-    to_hp_car = db.Column(db.Integer, nullable=False)
-    from_production_year_car = db.Column(db.Integer, nullable=False)
-    to_production_year_car = db.Column(db.Integer, nullable=False)
-    rate = db.Column(db.Numeric, nullable=False)
 
 
 @region_routes.route('/v1/region/add', methods=['POST'])
@@ -32,6 +18,7 @@ def add_region():
         db.session.add(region)
         db.session.commit()
         message = 'Регион успешно добавлен'
+
     return render_template('region-add.html', message=message)
 
 
@@ -58,6 +45,7 @@ def update_region():
     else:
         region.name = name
         db.session.commit()
+
         message = 'Регион успешно обновлен'
     return render_template('region-update.html', message=message)
 
@@ -84,6 +72,7 @@ def delete_region():
     else:
         db.session.delete(region)
         db.session.commit()
+
         message = 'Регион успешно удалён'
 
     return render_template('region-delete.html', message=message)
