@@ -1,11 +1,9 @@
 from flask import Blueprint, request, render_template
-from region_routes import Region
-from region_routes import CarTaxParam
-from db_test import db
+from tables import Region, CarTaxParam
+from tables import db
 tax_param = Blueprint('tax_param', __name__)
 
 
-# Добавление данных в таблицу Параметр налогообложения
 @tax_param.route('/v1/car/tax-param/add', methods=['POST'])
 def add_car_tax_param():
     data = request.form
