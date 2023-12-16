@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template
-from region_routes import CarTaxParam
+from tables import CarTaxParam
 tax_route = Blueprint('tax_route', __name__)
 
 
